@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayuri Vagh | Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#7c3aed;--pl:#ede9fe;--pm:#c4b5fd;
+  --t:#0d9488;--tl:#ccfbf1;--tm:#5eead4;
+  --ink:#111827;--mid:#6b7280;--light:#f9fafb;--border:#e5e7eb;
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-weight:700;font-size:18px;color:var(--p);text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--mid);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--p)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;background:linear-gradient(160deg,var(--white) 60%,var(--pl) 100%)}
+.hero-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:80px;width:100%}
+.hero-text{flex:1}
+.hero-greeting{font-size:14px;font-weight:600;color:var(--t);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:12px}
+.hero-name span{color:var(--p)}
+.hero-role{font-size:1.1rem;color:var(--mid);margin-bottom:28px;max-width:480px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.tag{font-size:12px;font-weight:500;padding:5px 14px;border-radius:100px;background:var(--pl);color:var(--p);border:1px solid var(--pm)}
+.tag.tl{background:var(--tl);color:var(--t);border-color:var(--tm)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-p{background:var(--p);color:#fff}
+.btn-p:hover{background:#6d28d9;transform:translateY(-2px)}
+.btn-t{background:var(--t);color:#fff}
+.btn-t:hover{background:#0f766e;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--p);border:2px solid var(--p)}
+.btn-o:hover{background:var(--pl);transform:translateY(-2px)}
+.hero-avatar{flex-shrink:0;width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,var(--pl),var(--tl));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px var(--white),0 0 0 12px var(--pm)}
+.avatar-initials{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--t));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* STATS */
+.stats{background:var(--p);padding:40px 5%}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;text-align:center}
+.stat-num{font-size:2rem;font-weight:700;color:#fff}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,.75);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-badge{display:inline-block;font-size:12px;font-weight:600;color:var(--p);background:var(--pl);padding:4px 14px;border-radius:100px;margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;margin-bottom:48px}
+.section-title span{color:var(--p)}
+
+/* SKILLS */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:10px}
+.skill{font-size:13px;font-weight:500;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);color:var(--ink);transition:all .2s;cursor:default}
+.skill:hover{border-color:var(--p);color:var(--p);background:var(--pl);transform:translateY(-2px)}
+.skill.sp{background:var(--pl);border-color:var(--pm);color:var(--p)}
+.skill.st{background:var(--tl);border-color:var(--tm);color:var(--t)}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}
+.tool-card{background:var(--light);border:1.5px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:all .3s}
+.tool-card:hover{border-color:var(--p);background:var(--pl);transform:translateY(-4px)}
+.tool-icon{font-size:2rem;margin-bottom:8px}
+.tool-name{font-size:13px;font-weight:600;color:var(--ink)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.proj{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;text-decoration:none;color:inherit;display:block}
+.proj:hover{border-color:var(--pm);transform:translateY(-6px);box-shadow:0 24px 48px rgba(124,58,237,.1)}
+.proj-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.proj-body{padding:24px}
+.proj-category{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.proj-title{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.proj-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:14px}
+.proj-stack{font-size:11px;color:var(--mid);font-weight:500}
+.proj-link{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--p);margin-top:12px}
+
+/* RESEARCH */
+.research-card{background:linear-gradient(135deg,var(--pl),var(--tl));border-radius:20px;padding:40px;display:flex;gap:32px;align-items:center}
+.research-icon{font-size:4rem;flex-shrink:0}
+.research-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.research-sub{font-size:14px;color:var(--mid);margin-bottom:20px;line-height:1.6}
+
+/* EDUCATION */
+.edu-timeline{display:flex;flex-direction:column;gap:0}
+.edu-item{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--border)}
+.edu-item:last-child{border-bottom:none}
+.edu-dot{width:14px;height:14px;border-radius:50%;background:var(--p);flex-shrink:0;margin-top:6px}
+.edu-year{font-family:'Inter',monospace;font-size:12px;font-weight:600;color:var(--p);background:var(--pl);padding:4px 12px;border-radius:100px;height:fit-content;white-space:nowrap}
+.edu-deg{font-size:1rem;font-weight:700;margin-bottom:3px}
+.edu-school{font-size:13px;color:var(--mid)}
+.edu-grade{font-size:12px;color:var(--t);font-weight:600;margin-top:3px}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.cert{background:var(--light);border:1.5px solid var(--border);border-radius:12px;padding:18px 20px;transition:all .2s}
+.cert:hover{border-color:var(--tm);background:var(--tl)}
+.cert-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.cert-org{font-size:12px;color:var(--mid)}
+
+/* CONTACT */
+#contact{background:var(--light)}
+.contact-card{background:linear-gradient(135deg,var(--p),var(--t));border-radius:24px;padding:60px;text-align:center;color:#fff}
+.contact-card h2{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:12px}
+.contact-card p{color:rgba(255,255,255,.8);margin-bottom:32px;font-size:1rem}
+.btn-w{background:#fff;color:var(--p);font-weight:700}
+.btn-w:hover{background:var(--pl);transform:translateY(-2px)}
+.btn-wg{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{text-align:center;padding:28px;font-size:12px;color:var(--mid);border-top:1px solid var(--border)}
+
+@media(max-width:768px){
+  nav{padding:0 4%}.nav-links{display:none}
+  #hero{padding:90px 5% 60px}.hero-inner{flex-direction:column;gap:40px;text-align:center}
+  .hero-avatar{width:200px;height:200px}.avatar-initials{font-size:3.5rem}
+  .hero-tags,.hero-btns{justify-content:center}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  section{padding:60px 5%}
+  .research-card{flex-direction:column;text-align:center}
+  .contact-card{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="logo">Mayuri Vagh</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-greeting">Welcome to my portfolio</p>
+      <h1 class="hero-name">Hi, I'm <span>Mayuri Vagh</span></h1>
+      <p class="hero-role">Data Analyst with MSc in Big Data & Business Intelligence — turning complex data into clear, actionable insights that drive real business decisions.</p>
+      <div class="hero-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag tl">Power BI</span>
+        <span class="tag tl">Tableau</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag tl">Big Data</span>
+      </div>
+      <div class="hero-btns">
+        <a href="https://www.linkedin.com/in/mayuri-vagh-sss" target="_blank" class="btn btn-p">LinkedIn Profile</a>
+        <a href="https://github.com/vaghMayuri96" target="_blank" class="btn btn-t">GitHub Projects</a>
+        <a href="https://link.springer.com/chapter/10.1007/978-981-16-0878-0_18" target="_blank" class="btn btn-o">Published Paper ↗</a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <span class="avatar-initials">MV</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">2</div><div class="stat-lbl">Masters Degrees</div></div>
+    <div><div class="stat-num">1</div><div class="stat-lbl">Published Paper</div></div>
+    <div><div class="stat-num">6+</div><div class="stat-lbl">Data Projects</div></div>
+    <div><div class="stat-num">10+</div><div class="stat-lbl">Certifications</div></div>
+    <div><div class="stat-num">3+</div><div class="stat-lbl">Years UK Experience</div></div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--light)">
+  <div class="section-inner">
+    <span class="section-badge">What I work with</span>
+    <h2 class="section-title">Skills & <span>Tools</span></h2>
+    <div class="skills-wrap" style="margin-bottom:32px">
+      <span class="skill sp">Python</span>
+      <span class="skill sp">SQL</span>
+      <span class="skill sp">Machine Learning</span>
+      <span class="skill sp">Scikit-learn</span>
+      <span class="skill sp">Pandas & NumPy</span>
+      <span class="skill st">Power BI</span>
+      <span class="skill st">Tableau</span>
+      <span class="skill st">Data Visualisation</span>
+      <span class="skill st">Google Analytics</span>
+      <span class="skill">R Programming</span>
+      <span class="skill">Big Data / Hadoop</span>
+      <span class="skill">Microsoft Azure</span>
+      <span class="skill">Keras / TensorFlow</span>
+      <span class="skill">Jupyter Notebook</span>
+      <span class="skill">Excel</span>
+      <span class="skill">GDPR</span>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-icon">🐍</div><div class="tool-name">Python</div></div>
+      <div class="tool-card"><div class="tool-icon">🗄️</div><div class="tool-name">SQL</div></div>
+      <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Power BI</div></div>
+      <div class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">Tableau</div></div>
+      <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">Machine Learning</div></div>
+      <div class="tool-card"><div class="tool-icon">☁️</div><div class="tool-name">Azure</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <span class="section-badge">My work</span>
+    <h2 class="section-title">Portfolio <span>Projects</span></h2>
+    <div class="projects-grid">
+      <a href="https://github.com/vaghMayuri96/prediction-using-decision-tree-algorithm" target="_blank" class="proj">
+        <div class="proj-img" style="background:var(--pl)">🤖</div>
+        <div class="proj-body">
+          <p class="proj-category" style="color:var(--p)">Machine Learning</p>
+          <h3 class="proj-title">Iris Flower Classification</h3>
+          <p class="proj-desc">Decision Tree classifier predicting iris species from physical measurements. Includes accuracy score, confusion matrix and feature importance analysis.</p>
+          <p class="proj-stack">Python · Scikit-learn · Pandas · Matplotlib</p>
+          <span class="proj-link">View Project ↗</span>
+        </div>
+      </a>
+      <a href="https://github.com/vaghMayuri96/Exploratory_Data_Analysis_Retail" target="_blank" class="proj">
+        <div class="proj-img" style="background:var(--tl)">📊</div>
+        <div class="proj-body">
+          <p class="proj-category" style="color:var(--t)">Business EDA</p>
+          <h3 class="proj-title">Retail Profit Analysis</h3>
+          <p class="proj-desc">Standard Class shipping drives 50%+ of profit. Actionable business recommendations for category focus and low-performing city growth strategies.</p>
+          <p class="proj-stack">Python · Pandas · Seaborn · Matplotlib</p>
+          <span class="proj-link">View Project ↗</span>
+        </div>
+      </a>
+      <a href="https://github.com/vaghMayuri96/-Exploratory-Data-Analysis-Sports-" target="_blank" class="proj">
+        <div class="proj-img" style="background:#fef3c7">🏏</div>
+        <div class="proj-body">
+          <p class="proj-category" style="color:#d97706">Sports Analytics</p>
+          <h3 class="proj-title">IPL Cricket Analysis</h3>
+          <p class="proj-desc">12-season IPL analysis — toss winners won 9 of 12 finals. Uncovered team strategies, player performance and match outcome patterns.</p>
+          <p class="proj-stack">Python · Pandas · Matplotlib · Seaborn</p>
+          <span class="proj-link">View Project ↗</span>
+        </div>
+      </a>
+      <a href="https://github.com/vaghMayuri96" target="_blank" class="proj">
+        <div class="proj-img" style="background:var(--pl)">📈</div>
+        <div class="proj-body">
+          <p class="proj-category" style="color:var(--p)">Power BI Dashboard</p>
+          <h3 class="proj-title">Superstore Sales Dashboard</h3>
+          <p class="proj-desc">Interactive Power BI dashboard analysing $2.3M in sales. West region leads at 31% of revenue with KPI cards, bar charts and trend analysis.</p>
+          <p class="proj-stack">Power BI · DAX · Data Visualisation</p>
+          <span class="proj-link">View Project ↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" style="background:var(--light)">
+  <div class="section-inner">
+    <span class="section-badge">Academic work</span>
+    <h2 class="section-title">Published <span>Research</span></h2>
+    <div class="research-card">
+      <div class="research-icon">📄</div>
+      <div>
+        <h3 class="research-title">Peer-reviewed Research Paper — Springer International Publishing</h3>
+        <p class="research-sub">Published academic research in computer science. Demonstrates advanced research methodology, technical writing and domain expertise. Available on Springer link — one of the world's leading academic publishers.</p>
+        <a href="https://link.springer.com/chapter/10.1007/978-981-16-0878-0_18" target="_blank" class="btn btn-p">View on Springer ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <span class="section-badge">Academic background</span>
+    <h2 class="section-title">Education & <span>Certifications</span></h2>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div style="flex:1">
+          <h3 class="edu-deg">MSc Big Data & Business Intelligence</h3>
+          <p class="edu-school">University of Greenwich, London, UK</p>
+          <p class="edu-grade">Grade: 2:1</p>
+        </div>
+        <span class="edu-year">2021–2022</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div style="flex:1">
+          <h3 class="edu-deg">MSc Computer Engineering</h3>
+          <p class="edu-school">SCET, Gujarat Technological University, India</p>
+          <p class="edu-grade">Grade: 85%</p>
+        </div>
+        <span class="edu-year">2018–2020</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div style="flex:1">
+          <h3 class="edu-deg">BE Information Technology</h3>
+          <p class="edu-school">UKA Tarsadia University, India</p>
+          <p class="edu-grade">Grade: 70%</p>
+        </div>
+        <span class="edu-year">2015–2018</span>
+      </div>
+    </div>
+    <h3 style="font-size:1.2rem;font-weight:700;margin:48px 0 20px">Professional Certifications</h3>
+    <div class="certs-grid">
+      <div class="cert"><p class="cert-name">Google Data Analytics</p><p class="cert-org">Google · 2023</p></div>
+      <div class="cert"><p class="cert-name">Google Analytics Individual</p><p class="cert-org">Google · 2024</p></div>
+      <div class="cert"><p class="cert-name">Tableau — 4 Certificates</p><p class="cert-org">Tableau · 2022–2023</p></div>
+      <div class="cert"><p class="cert-name">Neural Networks & Deep Learning</p><p class="cert-org">DeepLearning.AI · Coursera</p></div>
+      <div class="cert"><p class="cert-name">Data Science Programme</p><p class="cert-org">Forage · 2023</p></div>
+      <div class="cert"><p class="cert-name">Azure Fundamentals (AZ-900)</p><p class="cert-org">Microsoft Learn · 2026</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-card">
+      <h2>Let's Work Together</h2>
+      <p>Open to Data Analyst roles in the UK · Available for Skilled Worker visa sponsorship</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="https://www.linkedin.com/in/mayuri-vagh-sss" target="_blank" class="btn btn-w">LinkedIn Profile</a>
+        <a href="https://github.com/vaghMayuri96" target="_blank" class="btn btn-wg">GitHub</a>
+        <a href="https://link.springer.com/chapter/10.1007/978-981-16-0878-0_18" target="_blank" class="btn btn-wg">Research Paper</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Mayuri Vagh · Data Analyst · Birmingham, UK</footer>
+
+</body>
+</html>
